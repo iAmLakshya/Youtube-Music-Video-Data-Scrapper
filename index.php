@@ -3,6 +3,9 @@
     <title>YouTube Music Video Meta Data Scrapper</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>*{padding:0; margin:0}</style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-54987871-11"></script>
+    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-54987871-11');</script>
     </head>
     <body>
     <center>
@@ -42,43 +45,6 @@
         </div>
     </center>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script>
-            $( document ).ready(function() {
-                $('#submit').click(function(e){
-                    $('#submit').attr('value', 'loading...')
-                    $('#submit').attr('disabled', 'true')
-                    $('#submit').css('opacity', '0.5');
-                    e.preventDefault();
-                    $.ajax({
-                        type: "POST",
-                        url: 'youtube.php',
-                        data: $('#url').serialize(), // serializes the form's elements.
-                        success: function(res)
-                        {   
-                            $('#submit').attr('value', 'Submit');
-                            $('#submit').removeAttr('disabled');
-                            $('#submit').css('opacity', '1');
-
-                              if(res.status){
-                                $('#album').text(res.data.album?res.data.album:'---');
-                                $('#singer').text(res.data.artist?res.data.artist:'---');
-                                $('#label').text(res.data.label?res.data.label:'---');
-                                $('#lyrics').text(res.data.lyrics?res.data.lyrics:'---');
-                                $('#music').text(res.data.music?res.data.music:'---');
-                                $('#song').text(res.data.song?res.data.song:'---');
-                                
-                              }
-                        },
-                        error: function(res){
-                            $('#submit').attr('value', 'Submit')
-                            $('#submit').removeAttr('disabled')                            
-                            $('#submit').css('opacity', '1');
-                            alert('ERROR: '+ res.msg);
-                        }
-                    });
-                });
-            });
-
-        </script>
+        <script>$(document).ready(function(){$("#submit").click(function(t){$("#submit").attr("value","loading..."),$("#submit").attr("disabled","true"),$("#submit").css("opacity","0.5"),t.preventDefault(),$.ajax({type:"POST",url:"youtube.php",data:$("#url").serialize(),success:function(t){$("#submit").attr("value","Submit"),$("#submit").removeAttr("disabled"),$("#submit").css("opacity","1"),t.status&&($("#album").text(t.data.album?t.data.album:"---"),$("#singer").text(t.data.artist?t.data.artist:"---"),$("#label").text(t.data.label?t.data.label:"---"),$("#lyrics").text(t.data.lyrics?t.data.lyrics:"---"),$("#music").text(t.data.music?t.data.music:"---"),$("#song").text(t.data.song?t.data.song:"---"))},error:function(t){$("#submit").attr("value","Submit"),$("#submit").removeAttr("disabled"),$("#submit").css("opacity","1"),alert("ERROR: "+t.msg)}})})});</script>
     </body>
 </html> 
