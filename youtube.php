@@ -1,6 +1,7 @@
 <?php
 //--------------------------------- RETURN HEADERS----------------------------------------//
 header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
 
 //---------------------------------HELPER FUNCTIONS---------------------------------------//
 function resErr($msg){
